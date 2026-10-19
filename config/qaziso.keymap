@@ -2,16 +2,140 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    behaviors {
+        hrm: HRM {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HRM";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            bindings = <&kp>, <&kp>;
+
+            hold-trigger-key-positions = <KEYS_R THUMBS>;
+            hold-trigger-on-release;
+        };
+
+        sh: sticky_hold {
+            compatible = "zmk,behavior-hold-tap";
+            label = "SH";
+            bindings = <&mo>, <&sl>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <300>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        par1 {
+            bindings = <&kp LEFT_PARENTHESIS>;
+            key-positions = <3 2>;
+            layers = <0>;
+        };
+
+        par2 {
+            bindings = <&kp RIGHT_PARENTHESIS>;
+            key-positions = <6 7>;
+            layers = <0>;
+        };
+
+        cur1 {
+            bindings = <&kp LEFT_BRACE>;
+            key-positions = <21 22>;
+            layers = <0>;
+        };
+
+        cur2 {
+            bindings = <&kp RIGHT_BRACE>;
+            key-positions = <26 25>;
+            layers = <0>;
+        };
+
+        bracket1 {
+            bindings = <&kp LEFT_BRACKET>;
+            key-positions = <12 13>;
+            layers = <0>;
+        };
+
+        bracket2 {
+            bindings = <&kp RIGHT_BRACKET>;
+            key-positions = <17 16>;
+            layers = <0>;
+        };
+
+        esc {
+            bindings = <&kp ESCAPE>;
+            key-positions = <1 0>;
+            layers = <0>;
+        };
+
+        quotes {
+            bindings = <&kp SINGLE_QUOTE>;
+            key-positions = <9 18>;
+            layers = <0>;
+        };
+
+        enter {
+            bindings = <&kp ENTER>;
+            key-positions = <18 17 16>;
+            layers = <0>;
+        };
+
+        tab {
+            bindings = <&kp TAB>;
+            key-positions = <11 10>;
+            layers = <0>;
+        };
+
+        slash {
+            bindings = <&kp SLASH>;
+            key-positions = <26 27>;
+            layers = <0>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
+        base {
             display-name = "Base";
             bindings = <
-                &kp A &kp B &kp C &kp D &kp E &kp F &kp G &kp H &kp I &kp J
-                &kp K &kp L &kp M &kp N &kp O &kp P &kp Q &kp R &kp S
-                &kp T &kp U &kp V &kp W &kp X &kp Y &kp Z &kp A &kp B &kp C
-                &kp D &kp E &kp F &kp G &kp H
+&kp Q              &kp W           &kp E      &kp R  &kp T  &kp Y  &kp U  &kp I      &kp O    &kp P
+&kp A              &kp S           &kp D      &kp F  &kp G  &kp H  &kp J  &kp K      &kp L
+&hrm LEFT_SHIFT Z  &kp X           &kp C      &kp V  &kp B  &kp N  &kp M  &kp COMMA  &kp DOT  &mo 3
+&kp LCTRL          &lt 1 LEFT_GUI  &kp SPACE                                         &mo 2    &trans
+            >;
+        };
+
+        lower {
+            bindings = <
+&kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7    &kp N8    &kp N9     &kp N0
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &kp UP    &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans
+&trans  &trans  &trans                                              &trans     &trans
+            >;
+        };
+
+        upper {
+            bindings = <
+&kp LS(EXCL)  &kp LS(AT)  &kp LS(POUND)  &kp LS(DLLR)  &kp LS(PRCNT)  &kp LS(CARET)  &kp LS(AMPS)   &kp LS(STAR)  &trans        &kp GRAVE
+&trans        &trans      &trans         &trans        &trans         &trans         &kp MINUS      &kp EQUAL     &kp BSLH
+&trans        &trans      &trans         &trans        &trans         &trans         &kp LS(UNDER)  &kp LS(PLUS)  &kp LS(PIPE)  &kp LS(TILDE)
+&trans        &trans      &trans                                                                                  &trans        &trans
+            >;
+        };
+
+        fn+boot {
+            bindings = <
+&kp F1   &kp F2   &kp F3  &kp F4  &kp F5       &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
+&kp F11  &kp F12  &trans  &trans  &bootloader  &trans  &trans  &trans  &trans
+&trans   &trans   &trans  &trans  &trans       &trans  &trans  &trans  &trans  &trans
+&trans   &trans   &trans                                               &trans  &trans
             >;
         };
     };
