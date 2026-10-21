@@ -97,6 +97,12 @@
             key-positions = <26 27>;
             layers = <0>;
         };
+
+        backspace {
+            bindings = <&kp BACKSPACE>;
+            key-positions = <9 8>;
+            layers = <0>;
+        };
     };
 
     keymap {
