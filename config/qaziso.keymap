@@ -28,7 +28,7 @@
             flavor = "tap-preferred";
         };
     };
-
+ 
     combos {
         compatible = "zmk,combos";
 
@@ -101,6 +101,12 @@
         backspace {
             bindings = <&kp BACKSPACE>;
             key-positions = <9 8>;
+            layers = <0>;
+        };
+
+        semicolon {
+            bindings = <&kp SEMI>;
+            key-positions = <18 17>;
             layers = <0>;
         };
     };
