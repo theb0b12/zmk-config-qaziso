@@ -28,7 +28,7 @@
             flavor = "tap-preferred";
         };
     };
- 
+
     combos {
         compatible = "zmk,combos";
 
@@ -109,6 +109,12 @@
             key-positions = <18 17>;
             layers = <0>;
         };
+
+        delete {
+            bindings = <&kp DEL>;
+            key-positions = <9 8>;
+            layers = <1>;
+        };
     };
 
     keymap {
@@ -117,10 +123,10 @@
         base {
             display-name = "Base";
             bindings = <
-&kp Q              &kp W           &kp E      &kp R  &kp T  &kp Y  &kp U  &kp I      &kp O    &kp P
+&kp Q              &kp W           &kp E      &kp R  &kp T  &kp Y  &kp U  &kp I      &kp O        &kp P
 &kp A              &kp S           &kp D      &kp F  &kp G  &kp H  &kp J  &kp K      &kp L
-&hrm LEFT_SHIFT Z  &kp X           &kp C      &kp V  &kp B  &kp N  &kp M  &kp COMMA  &kp DOT  &mo 3
-&kp LCTRL          &lt 1 LEFT_GUI  &kp SPACE                                         &mo 2    &trans
+&hrm LEFT_SHIFT Z  &kp X           &kp C      &kp V  &kp B  &kp N  &kp M  &kp COMMA  &kp DOT      &mo 3
+&kp LCTRL          &lt 1 LEFT_GUI  &kp SPACE                                         &lt 2 ENTER  &trans
             >;
         };
 
